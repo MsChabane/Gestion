@@ -6,12 +6,13 @@ package Start;
 
 
 
-/**
- *
- * @author Lenovo
- */
+
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello world");
+        String id = "VE ";
+        
+                
+        System.out.println(id);         
     }
 }

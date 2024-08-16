@@ -89,7 +89,18 @@ public class ArticleModel {
 
    // mnimo+ 3 car ordre    
     private  static void  generatId (ArticleModel artM) throws SQLException{
-          String id = artM.typeArt.getMnimoTypeArt();
+          /* if
+          we have a mnimo like  "VEG" ==> the code article will be like "VEG_000"
+          so we will change a little bit in the method genererId of class Article Model
+          the change is  to make the mnino 4 caracters if its not ;
+          
+           */
+          String id = artM.typeArt.getMnimoTypeArt();//
+          //check if the if is of 4 caracters here if not try to fill the space use the caracter _ ;
+          id = id.trim();
+        id = (id.length()==4) ? id:
+                (id.length()==3)?id.concat("_"):
+                (id.length()==2)?id.concat("__"):id.concat("___");
        Connection con = Connexion.connecter();
        PreparedStatement pre =con.prepareStatement("select max(substring(code_art,5)) from article where code_art like ? ");
        pre.setString(1,id.concat("%"));
