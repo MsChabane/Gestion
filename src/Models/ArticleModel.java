@@ -14,9 +14,22 @@ public class ArticleModel {
     private double prixArt;
     private TypeArticleModel typeArt ;
 
+    public ArticleModel(double prixArt) {
+        this.prixArt = prixArt;
+    }
+
     public String getCodeArt() {
         return codeArt;
     }
+
+    @Override
+    public boolean equals(Object obj) {// to use eqauls 
+     /*   if(obj instanceof ArticleModel)
+             return this.prixArt== ((ArticleModel)obj).prixArt; 
+        return false;*/
+        return (obj instanceof ArticleModel)?  this.prixArt== ((ArticleModel)obj).prixArt : false;   
+    }
+    
 
     public void setCodeArt(String codeArt) {
         this.codeArt = codeArt;

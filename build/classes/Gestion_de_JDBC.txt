@@ -1,0 +1,87 @@
+1. driver (mysql-connecteur (jar)) integer fi projet (jdbc)
+
+
+2.create the connection between java and mysql 
+ Connection (class fi java.sql) 
+driverManager.getConnection("jdbc:mysql://{HOST}:{PORT}/{DATABASE_NAME}",{USERNAME},{PASSWORD})==>Connection
+
+
+3.manipulation 
+
+Connection con = DB.connect();
+(DB is a user class  that try to conncet to mysql database 
+this class has only one methode call connect (static method because we don't need to 
+get an instance of class DB to call it ) 
+that method return an Object of java.sql.Connection if the connection established or  an error if the connection failed )
+*********************************************************************
+PreparedStatement prp =con.preparedStatement("sql query");
+prp.setDateType(index,value);
+DataType{
+varchar==> String
+Int ==> Int 
+boolean ==> Boolean
+Decimal ==> Double 
+}
+(we can add the ? in the )
+
+
+exp: String q ="insert into tableName (id,nom) values (?,?)";
+PreparedStatement prp =con.preparedStatement(q);
+prp.setString( 1 , "value of id col" );
+prp.setString(2,"value of nom col");
+**********************************************************************
+Statement  stmt ==> con.createStatement();
+
+
+{
+for example we have this structure of table in database 
+create table tableName(
+	id varchar(7) pr ,
+	nom varchar(30),
+	estSupprimer Boolean Default false
+);
+}
+
+
+
+3. Execution 
+
+3.1 ) using prparedStatement  called for example (prp)
+
+==> prp.executeQuery()  return Data from database and store that data into Object ResultSet ;
+==> prp.executeUpdate() return an integer
+
+3.2 ) using Statement called stmt 
+==> stmt.executeQuery(query) ==> ResuySet ;
+==> stmt.executeUpdate(query) ==> Integer ;
+
+4. ) getResult 
+ResultSet res ;// store the data from database
+res.next() : return a boolean (true if its not empty else false )  but null is a value also
+res.getDate("nom de colomn ")or  res.getDate(number of the colomn)
+
+if we get one row of date we use
+
+if(res.next()){
+SOME CODE	
+} to read it ;
+
+while(res.next()){
+	some code
+}		
+
+
+5.CLOSE THE CONNECTION
+
+
+
+
+   
+
+
+
+
+
+
+
+
