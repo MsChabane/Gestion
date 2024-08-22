@@ -78,10 +78,10 @@ public class ArticleModel {
     public ArticleModel() {
     }
     
-   public static void ajouterArticle (ArticleModel artM ) throws SQLException{
-       ArticleModel.generatId (artM);
+   public  void ajouterArticle (ArticleModel artM ) throws SQLException{
+       generatId (artM);
        Connection con = Connexion.connecter();
-       PreparedStatement pre =con.prepareStatement("insert into article  values (?,?,?,?,?)");
+       PreparedStatement pre =con.prepareStatement("insert into article  values (?,?,?,?,?,false)");
        pre.setString(1,artM.getCodeArt());
        pre.setString(2,artM.getDisiniationArt());
        pre.setInt(3,artM.getQuantiteArt());
@@ -90,7 +90,7 @@ public class ArticleModel {
         pre.executeUpdate();
    }  
     
-    public static void modifierArticle (ArticleModel artM ) throws SQLException{   
+    public  void modifierArticle (ArticleModel artM ) throws SQLException{   
        Connection con = Connexion.connecter();
        PreparedStatement pre =con.prepareStatement("update article set disiniation = ? , quantite = ? , prix = ? where code_art = ? ;");
        pre.setString(1,artM.getDisiniationArt());
@@ -101,7 +101,7 @@ public class ArticleModel {
    } 
 
    // mnimo+ 3 car ordre    
-    private  static void  generatId (ArticleModel artM) throws SQLException{
+    private   void  generatId (ArticleModel artM) throws SQLException{
           /* if
           we have a mnimo like  "VEG" ==> the code article will be like "VEG_000"
           so we will change a little bit in the method genererId of class Article Model
@@ -134,7 +134,7 @@ public class ArticleModel {
         this.typeArt = typeArt;
     }
     
-    public static ResultSet display_allArticles () throws SQLException{
+    public  ResultSet display_allArticles () throws SQLException{
        Connection con = Connexion.connecter();
        Statement stm = con.createStatement();
        ResultSet rs = stm.executeQuery("select code_art , disiniation ,quantite , libble_type ,prix from article , type_art  where article.type_art = type_art.id_type    ");
@@ -149,7 +149,7 @@ public class ArticleModel {
        return rs;
     }
     
-    public  static void dic_quantite  (int quantite_vent  , String code_art ) throws SQLException{
+    public   void dic_quantite  (int quantite_vent  , String code_art ) throws SQLException{
        Connection con = Connexion.connecter();
        PreparedStatement pre =con.prepareStatement("update article  set quantite = quantite - ?  where code_art = ? ;");
        pre.setInt(1,quantite_vent);
@@ -157,13 +157,15 @@ public class ArticleModel {
        pre.executeUpdate();  
     }
     
-    public static ResultSet display_existArticle  () throws SQLException{
+    public  ResultSet display_existArticle  () throws SQLException{
        Connection con = Connexion.connecter();
        Statement stm = con.createStatement();
        ResultSet rs = stm.executeQuery("select code_art , disiniation ,quantite ,prix from article where quantite > 0 ");
        return rs;
     }
-    
+    public void checkDis (){
+        
+    }
     
     @Override
     public String toString() {
