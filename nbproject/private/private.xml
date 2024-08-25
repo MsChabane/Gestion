@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Dawnlaods/Gestion/src/Models/ClientModel.java</file>
-            <file>file:/D:/Dawnlaods/Gestion/src/Models/TypeArticleModel.java</file>
-            <file>file:/D:/Dawnlaods/Gestion/src/Views/ArticleViews.java</file>
-            <file>file:/D:/Dawnlaods/Gestion/src/Models/ArticleModel.java</file>
-            <file>file:/D:/Dawnlaods/Gestion/src/Start/Main.java</file>
-            <file>file:/D:/Dawnlaods/Gestion/src/Models/Connexion.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Views/EditArticleView.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Contollers/AddArticleControllers.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/article_tamplate.png</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Views/ArticlesViews.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Contollers/ArticleController.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Gestion_de_JDBC.txt</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Views/AddNewArticles.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Contollers/EditArticleController.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Start/Main.java</file>
+            <file>file:/G:/douaa/java_netbeans/Gestion/src/Models/ArticleModel.java</file>
         </group>
     </open-files>
 </project-private>
