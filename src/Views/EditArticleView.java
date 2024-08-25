@@ -47,7 +47,7 @@ public class EditArticleView extends javax.swing.JDialog { //we choose the JDial
         btnFermer.setBackground(new java.awt.Color(102, 153, 255));
         btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnFermer.setForeground(new java.awt.Color(255, 255, 255));
-        btnFermer.setText("X");
+        btnFermer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_arrow_32px.png"))); // NOI18N
         btnFermer.setFocusable(false);
         btnFermer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -105,6 +105,7 @@ public class EditArticleView extends javax.swing.JDialog { //we choose the JDial
 
         btnEditArt.setBackground(new java.awt.Color(255, 255, 51));
         btnEditArt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEditArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_update_left_rotation_32px.png"))); // NOI18N
         btnEditArt.setText("EDIT");
         btnEditArt.setFocusable(false);
 
@@ -140,14 +141,11 @@ public class EditArticleView extends javax.swing.JDialog { //we choose the JDial
                                 .addComponent(codeLab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(35, 35, 35))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGap(9, 9, 9)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtPrc, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                                 .addComponent(txtQua)

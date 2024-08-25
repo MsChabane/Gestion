@@ -63,13 +63,16 @@ public class ArticleController {
         });*/
         v.setKeyBoardTextRecherche(new KeyAdapter () {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 String rechercheValue  = v.getTextRecherch();
-               if (rechercheValue == null || rechercheValue.isBlank()){
+
+               if ( rechercheValue.isBlank()){
                    v.remplirTable(articles);
                }else {
                    List <ArticleModel> articleFiltrer ;
-                        articleFiltrer  = articles.stream().filter(article->article.getDisiniationArt().contains(rechercheValue) || article.getTypeArt().getLibbleTypeArt().contains(rechercheValue)).
+                        articleFiltrer  = 
+                                articles.stream()
+                                .filter(article->article.getDisiniationArt().contains(rechercheValue) || article.getTypeArt().getLibbleTypeArt().contains(rechercheValue)).
                         toList();
                         v.remplirTable(articleFiltrer);
                }
@@ -107,7 +110,7 @@ public class ArticleController {
         try {
             getDataFromModelToView();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(v,"CONNEXION PROBLEM","SYSTEM",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(v,"CONNEXION PROBLEM "+ex.getMessage(),"SYSTEM",JOptionPane.ERROR_MESSAGE);
         }
         
         v.setMouseListnerForTable( new MouseAdapter (){

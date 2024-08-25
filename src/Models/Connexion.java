@@ -6,8 +6,7 @@ import java.sql.SQLException;
 
 
 public class Connexion {
-    
     public static Connection connecter () throws SQLException{
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionstock","root","DouaaMySQL2004"); 
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionstock","root","chabane"); 
     }  
 }

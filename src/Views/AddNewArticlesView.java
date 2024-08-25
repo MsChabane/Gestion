@@ -30,17 +30,20 @@ public class AddNewArticlesView extends javax.swing.JDialog {
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnFermer = new javax.swing.JButton();
-        comType = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         txtQua = new javax.swing.JTextField();
-        txtDsg = new javax.swing.JTextField();
         txtPrc = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        comType = new javax.swing.JComboBox<>();
         btnAddArt = new javax.swing.JButton();
+        txtDsg = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headerPanel.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -51,7 +54,7 @@ public class AddNewArticlesView extends javax.swing.JDialog {
         btnFermer.setBackground(new java.awt.Color(102, 153, 255));
         btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnFermer.setForeground(new java.awt.Color(255, 255, 255));
-        btnFermer.setText("X");
+        btnFermer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_back_arrow_32px.png"))); // NOI18N
         btnFermer.setFocusable(false);
         btnFermer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -83,83 +86,50 @@ public class AddNewArticlesView extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        comType.setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, 700, -1));
+
+        jPanel2.setBackground(new java.awt.Color(132, 176, 201));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtQua.setBackground(new java.awt.Color(204, 204, 255));
-
-        txtDsg.setBackground(new java.awt.Color(204, 204, 255));
-        txtDsg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDsgActionPerformed(evt);
-            }
-        });
+        jPanel2.add(txtQua, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 296, 46));
 
         txtPrc.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("ENTER ARTICLE DESIGNATION ");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("CHOOSE AN ARTICLE TYPE");
+        jPanel2.add(txtPrc, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 296, 48));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("ENTER  ARTICLE PRICE ");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("ENTER ARTICLE  QUANTITY");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("ENTER ARTICLE DESIGNATION ");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("CHOOSE AN ARTICLE TYPE");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+
+        comType.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.add(comType, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 296, 39));
 
         btnAddArt.setBackground(new java.awt.Color(102, 255, 102));
         btnAddArt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAddArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_add_32px_1.png"))); // NOI18N
         btnAddArt.setText("ADD");
         btnAddArt.setFocusable(false);
+        jPanel2.add(btnAddArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 159, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAddArt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtQua)
-                            .addComponent(comType, 0, 324, Short.MAX_VALUE)
-                            .addComponent(txtDsg, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrc, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addGap(47, 47, 47))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comType, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDsg, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtQua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btnAddArt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
+        txtDsg.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.add(txtDsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 296, 39));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -171,10 +141,6 @@ public class AddNewArticlesView extends javax.swing.JDialog {
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
         
     }//GEN-LAST:event_btnFermerActionPerformed
-
-    private void txtDsgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDsgActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDsgActionPerformed
 
     
 
@@ -223,6 +189,8 @@ public class AddNewArticlesView extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtDsg;
     private javax.swing.JTextField txtPrc;
     private javax.swing.JTextField txtQua;

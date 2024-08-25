@@ -1,0 +1,144 @@
+package start;
+
+
+
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.TextArea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class FirstFrame extends JFrame   {
+
+	public FirstFrame() {
+		setUndecorated(true);
+		setTitle("douaa");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(500, 700);
+		setLayout(null);
+		setLocation(100, 300);
+		JPanel k = new JPanel();
+		k.setBounds(0, 0, 500, 50);
+		k.setBackground(Color.DARK_GRAY);
+		add(k);
+		TextArea txt = new TextArea();
+		txt.setBounds(10, 400, 480, 290);
+		
+		
+		JLabel lbl = new JLabel();
+		lbl.setFont(new Font("", Font.BOLD, 25));
+		lbl.setForeground(Color.red);
+		lbl.setBounds(120, 320, 500, 60);
+		btn =new JButton("click here from btn1");
+		btn.setBackground(Color.black);
+		btn.setForeground(Color.white);
+		btn.setBounds(120, 120, 200, 40);
+		add(btn);
+		JButton  btn2 =new JButton("click here from btn2");
+		btn2.setBackground(Color.black);
+		btn2.setForeground(Color.white);
+		btn2.setBounds(120, 220, 200, 40);
+		add(btn2);
+		
+		
+		/*btn2.addActionListener(new ActionListener() {//define the code that happend when we clicked to the  btn 2 with class Anonumus
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("btn2  clicked");			}
+		});*/
+		btn2.addActionListener(//define the code that happend when we clicked to the  btn 2	
+			(e)-> {
+				System.exit(0);
+			}
+		);
+		/*btn2.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+				lbl.setText("mouse released");
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				lbl.setText("mouse pressed");
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				lbl.setText("mouse exited");
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				lbl.setText("mouse entered");
+			}
+			
+			
+		});*/
+		btn2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			
+			}
+
+		});
+		
+		
+		btn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
+		
+		txt.addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				lbl.setText("X= "+e.getX()+",Y = "+e.getY());
+			}
+			
+		});
+		k.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				x=e.getX();
+				y=e.getY();
+				setOpacity(0.4f);
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				setOpacity(1f);
+			}
+			
+		});
+		k.addMouseMotionListener(new MouseAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				int xOnScreen=e.getXOnScreen();
+				int yOnScreen=e.getYOnScreen();
+				setLocation(xOnScreen-x, yOnScreen-y);//for the Frame 
+			}
+	
+		});
+		
+		add(txt);
+		add(lbl);
+		setVisible(true);
+		
+	}
