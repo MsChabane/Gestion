@@ -1,6 +1,7 @@
 
 package Views;
 
+import Contollers.ArticleController;
 import Models.ArticleModel;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -9,14 +10,11 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class ArticlesViews extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ArticlesViews
-     */
+    ArticleController contArt ;
     public ArticlesViews() {
         setUndecorated(true);
         initComponents();
-        model = (DefaultTableModel) tabArticles.getModel();
+        model = (DefaultTableModel) tabArticles.getModel(); 
         
     }
 
@@ -44,14 +42,16 @@ public class ArticlesViews extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(132, 176, 201));
         jPanel1.setToolTipText("");
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tabArticles.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tabArticles.setBackground(new java.awt.Color(216, 232, 231));
+        tabArticles.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         tabArticles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Code Article", "Disiniation", "Quantite", "Type Article", "Prix"
+                "ARTICLE CODE ", "DESIGNATION", "QUANTITY", "ARTICLE TYPE", "PRICE "
             }
         ) {
             Class[] types = new Class [] {
@@ -70,16 +70,17 @@ public class ArticlesViews extends javax.swing.JFrame {
             }
         });
         tabArticles.setColumnSelectionAllowed(true);
-        tabArticles.setDragEnabled(true);
         tabArticles.setEditingColumn(6);
         tabArticles.setEditingRow(5);
         tabArticles.setFocusable(false);
         tabArticles.setRequestFocusEnabled(false);
         tabArticles.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tabArticles.setShowGrid(false);
+        tabArticles.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabArticles);
-        tabArticles.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tabArticles.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        btnModifier.setBackground(new java.awt.Color(255, 255, 51));
         btnModifier.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnModifier.setText("EDITE");
         btnModifier.setFocusable(false);
@@ -89,6 +90,7 @@ public class ArticlesViews extends javax.swing.JFrame {
             }
         });
 
+        btnAjouter.setBackground(new java.awt.Color(102, 255, 102));
         btnAjouter.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAjouter.setText("ADD");
         btnAjouter.setFocusable(false);
@@ -100,7 +102,10 @@ public class ArticlesViews extends javax.swing.JFrame {
 
         headerPanel.setBackground(new java.awt.Color(204, 204, 255));
 
-        btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnFermer.setBackground(new java.awt.Color(102, 153, 255));
+        btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnFermer.setForeground(new java.awt.Color(255, 255, 255));
+        btnFermer.setText("X");
         btnFermer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFermerMouseClicked(evt);
@@ -134,6 +139,7 @@ public class ArticlesViews extends javax.swing.JFrame {
             .addComponent(btnFermer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        txtRecherche.setBackground(new java.awt.Color(204, 204, 255));
         txtRecherche.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
         txtRecherche.setForeground(new java.awt.Color(153, 153, 153));
         txtRecherche.addActionListener(new java.awt.event.ActionListener() {
@@ -222,40 +228,7 @@ public class ArticlesViews extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRechercheKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ArticlesViews.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ArticlesViews.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ArticlesViews.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ArticlesViews.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ArticlesViews().setVisible(true);
-            }
-        });
-    }
     private DefaultTableModel model ;
     public void setActionAjouter (ActionListener a ){
         btnAjouter.addActionListener(a);
@@ -268,6 +241,10 @@ public class ArticlesViews extends javax.swing.JFrame {
     }
     public String  getTextRecherch (){
         return txtRecherche.getText();
+    }
+    
+    public int  getSelectedIndexFromTable (){
+        return tabArticles.getSelectedRow();
     }
     
     public void remplirTable (List <ArticleModel> rl  ){
@@ -300,7 +277,23 @@ public class ArticlesViews extends javax.swing.JFrame {
         Object [] row = {articleModel.getCodeArt(),articleModel.getDisiniationArt(),articleModel.getQuantiteArt(),articleModel.getTypeArt().getLibbleTypeArt(),articleModel.getPrixArt()};
         model.addRow(row);
       }
-    
+      public void editOneRowOfArticleTab (int selectedIndex , ArticleModel newArtModel ){
+          model.setValueAt(newArtModel.getCodeArt(),selectedIndex,0);
+          model.setValueAt(newArtModel.getDisiniationArt(),selectedIndex,1);
+          model.setValueAt(newArtModel.getQuantiteArt(),selectedIndex,2);
+          model.setValueAt(newArtModel.getTypeArt().getLibbleTypeArt(),selectedIndex,3);
+          model.setValueAt(newArtModel.getPrixArt(),selectedIndex,4);
+          
+      }
+      
+       public void setMouseListnerForTable (MouseAdapter m){
+         tabArticles.addMouseListener(m);
+     }
+       public void setController (ArticleController artC){
+           this.contArt = artC;
+           
+       }
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAjouter;
     private javax.swing.JButton btnFermer;

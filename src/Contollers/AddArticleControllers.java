@@ -3,7 +3,7 @@ package Contollers;
 
 import Models.ArticleModel;
 import Models.TypeArticleModel;
-import Views.AddNewArticles;
+import Views.AddNewArticlesView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -11,26 +11,25 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AddArticleControllers {
-    private AddNewArticles v ;
+    private AddNewArticlesView v ;// v is Add New Articles View 
     private ArticleModel m ;
     private ArrayList <TypeArticleModel> typeArticles ;
     private int xPanel,yPanel;
     
-    public AddArticleControllers(AddNewArticles v, ArticleModel m) {
-        this.v = v;
+    public AddArticleControllers(AddNewArticlesView v, ArticleModel m) {
+        this.v = v;// v is the Add New Articles View 
         this.m = m;
-        typeArticles = new ArrayList<>();
+        typeArticles = new ArrayList<>();// pour remplire les items de comboBox
         
-        
+       
         v.setMouseListnerForHeaderPanel(new MouseAdapter (){
             @Override
             public void mousePressed(MouseEvent e) {
-                xPanel = e.getX();
-                yPanel = e.getY();
+                xPanel = e.getX();// xPanel is the loction of mouse curser in the headerPanel of the Articles Frame (sur l'axe ox)
+                yPanel = e.getY();// yPanel is the loction of mouse curser in the headerPanel of the Articles Frame (sur l'axe oy)
                 v.setOpacity(0.5f);
             }
 
@@ -48,7 +47,7 @@ public class AddArticleControllers {
                int xScrean,yScean;
                xScrean = e.getXOnScreen();
                yScean = e.getYOnScreen();
-               v.setLocation(xScrean - xPanel, yScean - yPanel);
+               v.setLocation(xScrean - xPanel, yScean - yPanel);// v it's the frame
             }
             
         });
@@ -65,40 +64,41 @@ public class AddArticleControllers {
         try {
             getComItemFromView();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(v, "NO SELECTED ITEM ,CONNEXION PROBLRM","SYSTEM",JOptionPane.ERROR_MESSAGE);
         }
          v.setActionClose(e->{
              v.dispose ();
         });
+        v.setLocationRelativeTo(null);
         v.setVisible(true);
     } 
-    private boolean valide() {
+    private boolean valide() { 
             String dg = v.getTxtDsg();
             String quan = v.getTxtQua();
             String p = v.getTxtPrc();
             int i = v.getComItem();
             if (i<0){
-                System.out.println("Select an Item");
+                JOptionPane.showMessageDialog(v, "SELECT ONE ITEM ","COMBO BOX",JOptionPane.WARNING_MESSAGE);
                 return false;
             } 
             if (dg == null || dg.isBlank()){
-                System.out.println("Write smth in dg");
+                JOptionPane.showMessageDialog(v, "ENTER THE DESIGNATION OF THIS ARTICLE ","DESIGNATION",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             if (quan == null || quan.isBlank()){
-                System.out.println("Write smth in quan");
+               JOptionPane.showMessageDialog(v, "ENTER THE QUANTITY OF THIS ARTICLE ","QUANTITY",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             if (p == null || p.isBlank()){
-                System.out.println("Write smth in price");
+                JOptionPane.showMessageDialog(v, "ENTER THE PRICE OF THIS ARTICLE ","PRICE",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             if (!quan.matches("[0-9]+")){
-                 System.out.println("Write a Integer number in quan");
+                JOptionPane.showMessageDialog(v, "INVALID VALUE OF QUANTITY ","CORRECT QUANTITY",JOptionPane.WARNING_MESSAGE);
                 return false;
             }
             if (!p.matches("(\\d+).(\\d*)")){
-                 System.out.println("Write a Float number in price");
+                JOptionPane.showMessageDialog(v, "INVALID VALUE OF PRICE ","CORRECT PRICE",JOptionPane.WARNING_MESSAGE);
                 return false;
             } 
             m.setTypeArt(typeArticles.get(i));m.setDisiniationArt(dg);m.setQuantiteArt(Integer.parseInt(quan));m.setPrixArt(Double.parseDouble(p));
@@ -117,11 +117,13 @@ public class AddArticleControllers {
     private void ajouter() {
         try {
             m.ajouterArticle(m);
-            System.out.println("Ajouter avec succe ");
+            JOptionPane.showMessageDialog(v, "ARTICLE ADDED SUCCESSFULLY ","DONE",JOptionPane.INFORMATION_MESSAGE);
             v.getPerent().addOneRowToArticleTab(m);
+            ArticleController.articles.add(m);
             v.clearContent();
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+           JOptionPane.showMessageDialog(v, "NO ADDED ARTICLE , CONNEXION PROBLRM","SYSTEM",JOptionPane.ERROR_MESSAGE);
         }  
             }
             

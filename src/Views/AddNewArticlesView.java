@@ -1,16 +1,16 @@
 
 package Views;
 
-import Models.ArticleModel;
+
 import Models.TypeArticleModel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
-import java.util.List;
 
-public class AddNewArticles extends javax.swing.JDialog {
-    private ArticlesViews artVPerent ;
-    public AddNewArticles(ArticlesViews v ,boolean  mod) {
+
+public class AddNewArticlesView extends javax.swing.JDialog {
+    private ArticlesViews artVPerent ;// this varible is declareted to creat a relation between the Article Controller and Add Article Controller to use some methodes from Article Contoller 
+    public AddNewArticlesView(ArticlesViews v ,boolean  mod) {
         super (v,mod);
         this.artVPerent = v;
         setUndecorated(true);
@@ -48,7 +48,11 @@ public class AddNewArticles extends javax.swing.JDialog {
         jLabel1.setText("ADD NEW ARTICLES ");
         jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnFermer.setBackground(new java.awt.Color(102, 153, 255));
+        btnFermer.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnFermer.setForeground(new java.awt.Color(255, 255, 255));
+        btnFermer.setText("X");
+        btnFermer.setFocusable(false);
         btnFermer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFermerMouseClicked(evt);
@@ -79,14 +83,21 @@ public class AddNewArticles extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        comType.setBackground(new java.awt.Color(204, 204, 255));
+
+        txtQua.setBackground(new java.awt.Color(204, 204, 255));
+
+        txtDsg.setBackground(new java.awt.Color(204, 204, 255));
         txtDsg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDsgActionPerformed(evt);
             }
         });
 
+        txtPrc.setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("ENTER ARTICLE DISINAITION ");
+        jLabel2.setText("ENTER ARTICLE DESIGNATION ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("CHOOSE AN ARTICLE TYPE");
@@ -97,7 +108,7 @@ public class AddNewArticles extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("ENTER ARTICLE  QUANTITY");
 
-        btnAddArt.setBackground(new java.awt.Color(204, 255, 153));
+        btnAddArt.setBackground(new java.awt.Color(102, 255, 102));
         btnAddArt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAddArt.setText("ADD");
         btnAddArt.setFocusable(false);
@@ -109,22 +120,21 @@ public class AddNewArticles extends javax.swing.JDialog {
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtQua)
-                    .addComponent(comType, 0, 324, Short.MAX_VALUE)
-                    .addComponent(txtDsg, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPrc, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAddArt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtQua)
+                            .addComponent(comType, 0, 324, Short.MAX_VALUE)
+                            .addComponent(txtDsg, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrc, javax.swing.GroupLayout.Alignment.LEADING))))
                 .addGap(47, 47, 47))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(btnAddArt, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +156,9 @@ public class AddNewArticles extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrc, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btnAddArt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -196,6 +206,12 @@ public class AddNewArticles extends javax.swing.JDialog {
      public ArticlesViews  getPerent (){
         return artVPerent;
     }
+     
+    public void clearContent (){
+        txtDsg.setText("");
+        txtQua.setText("");
+        txtPrc.setText("");
+    } 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddArt;

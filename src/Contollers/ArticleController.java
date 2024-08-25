@@ -2,8 +2,9 @@ package Contollers;
 
 import Models.ArticleModel;
 import Models.TypeArticleModel;
-import Views.AddNewArticles;
+import Views.AddNewArticlesView;
 import Views.ArticlesViews;
+import Views.EditArticleView;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 
@@ -20,19 +22,27 @@ import java.util.List;
 public class ArticleController {
     private ArticlesViews v ;
     private ArticleModel m ;
-    private ArrayList <ArticleModel> articles ;
+    static ArrayList <ArticleModel> articles ;
     private int xPanel,yPanel;
     public ArticleController(ArticlesViews v, ArticleModel m) {
-        this.v = v;
+        this.v = v;// v is Article View
         this.m = m;
         articles = new ArrayList<>();
         v.setActionClose(e->{
              System.exit(0);
         });
-        v.setActionAjouter(e->{
-              new AddArticleControllers(new AddNewArticles(v,true), m);
-               
-           
+        v.setActionAjouter(e->{ // v is Article View
+              new AddArticleControllers(new AddNewArticlesView(v,true), m);
+        });       
+         
+         v.setActionModifier(e1->{
+              int selectedIndex = v.getSelectedIndexFromTable();
+              if (selectedIndex >=0){
+                  new EditArticleController(new EditArticleView(v,true), articles.get(selectedIndex));
+              }else {
+                  JOptionPane.showMessageDialog(v, "NO SELECTED ROW ","SYSTEM",JOptionPane.WARNING_MESSAGE);
+              }
+              
         });
        /* 
         v.setActionTextRecherche( new ActionListener (){
@@ -97,8 +107,20 @@ public class ArticleController {
         try {
             getDataFromModelToView();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(v,"CONNEXION PROBLEM","SYSTEM",JOptionPane.ERROR_MESSAGE);
         }
+        
+        v.setMouseListnerForTable( new MouseAdapter (){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+               int indexSelected = v.getSelectedIndexFromTable();
+               if (indexSelected <0){
+                   JOptionPane.showMessageDialog(v, "NO SELECTED ROW ","TABLE",JOptionPane.WARNING_MESSAGE);
+               }
+            }
+            
+        });
+        v.setLocationRelativeTo(null);
         v.setVisible(true);
     }
     private void getDataFromModelToView () throws SQLException{
@@ -109,7 +131,6 @@ public class ArticleController {
         rs.close();
         v.remplirTable(articles);
     }
-    
     
     
     
